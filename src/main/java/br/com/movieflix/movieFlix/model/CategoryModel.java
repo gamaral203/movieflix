@@ -2,9 +2,11 @@ package br.com.movieflix.movieFlix.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Builder
 @Entity
 @Table(name = "category")
 @AllArgsConstructor
