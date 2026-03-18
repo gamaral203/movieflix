@@ -1,9 +1,11 @@
 package br.com.movieflix.movieFlix.controller;
 
-import br.com.movieflix.movieFlix.controller.request.CategoryRequest;
-import br.com.movieflix.movieFlix.controller.response.CategoryResponse;
+
+import br.com.movieflix.movieFlix.dto.CategoryDTO;
 import br.com.movieflix.movieFlix.model.CategoryModel;
 import br.com.movieflix.movieFlix.service.CategoryService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,27 +22,39 @@ public class CategoryController {
     }
 
     @GetMapping("/listar")
-    public List<CategoryResponse> getAllCategories() {
-        return categoryService.findAll();
+    public ResponseEntity< List<CategoryDTO>> getAllCategories() {
+        List<CategoryDTO> categoryDTOS = categoryService.findAll();
+        return ResponseEntity.ok().body(categoryDTOS);
     }
 
     @PostMapping("/criar")
-    public CategoryResponse saveCategory(@RequestBody CategoryRequest request) {
-        return categoryService.saveCategory(request);
+    public ResponseEntity<String> saveCategory(@RequestBody CategoryDTO category) {
+        CategoryDTO categoryDTO = categoryService.saveCategory(category);
+        return ResponseEntity.status(HttpStatus.CREATED).body(categoryDTO.toString());
     }
 
     @GetMapping("/listarPorId/{id}")
-    public CategoryResponse getCategoryById(@PathVariable Long id) {
-        Optional<CategoryModel> optCategory = categoryService.findById(id);
-        if (optCategory.isPresent()) {
-            return optCategory.get();
+    public ResponseEntity<?> getCategoryById(@PathVariable Long id) {
+        CategoryDTO categoryDTO = categoryService.findById(id);
+
+        if (categoryDTO != null) {
+            return ResponseEntity.ok(categoryDTO);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(" Nenhuma categoria encontrada");
         }
-        return null;
     }
 
     @DeleteMapping("/deletarPorId/{id}")
-    public void deleteCategoryById(@PathVariable Long id) {
-        categoryService.deleteCategory(id);
+    public ResponseEntity<String> deleteCategoryById(@PathVariable Long id) {
+        if (categoryService.findById(id) != null) {
+            categoryService.deleteCategory(id);
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body("Categoria com o id " + id + " deletada com sucesso");
+        }else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Nenhuma categoria encontrada");
+        }
     }
 
 }
