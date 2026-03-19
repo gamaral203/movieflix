@@ -2,14 +2,12 @@ package br.com.movieflix.movieFlix.controller;
 
 
 import br.com.movieflix.movieFlix.dto.CategoryDTO;
-import br.com.movieflix.movieFlix.model.CategoryModel;
 import br.com.movieflix.movieFlix.service.CategoryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/movieflix/category")
@@ -22,7 +20,7 @@ public class CategoryController {
     }
 
     @GetMapping("/listar")
-    public ResponseEntity< List<CategoryDTO>> getAllCategories() {
+    public ResponseEntity<List<CategoryDTO>> getAllCategories() {
         List<CategoryDTO> categoryDTOS = categoryService.findAll();
         return ResponseEntity.ok().body(categoryDTOS);
     }
@@ -51,7 +49,7 @@ public class CategoryController {
             categoryService.deleteCategory(id);
             return ResponseEntity.status(HttpStatus.OK)
                     .body("Categoria com o id " + id + " deletada com sucesso");
-        }else {
+        } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("Nenhuma categoria encontrada");
         }

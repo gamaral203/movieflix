@@ -9,13 +9,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class CategoryMapper {
 
-    public CategoryModel map (CategoryDTO categoryDTO) {
+    public CategoryModel map(CategoryDTO categoryDTO) {
         CategoryModel categoryModel = new CategoryModel();
         categoryModel.setId(categoryDTO.getId());
         categoryModel.setName(categoryDTO.getName());
         return categoryModel;
     }
-    public CategoryDTO map (CategoryModel categoryModel) {
+
+    public CategoryDTO map(CategoryModel categoryModel) {
         CategoryDTO categoryDTO = new CategoryDTO();
         categoryDTO.setId(categoryModel.getId());
         categoryDTO.setName(categoryModel.getName());

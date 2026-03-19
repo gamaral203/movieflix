@@ -20,6 +20,7 @@ public class CategoryService {
         this.categoryRepository = categoryRepository;
         this.categoryMapper = categoryMapper;
     }
+
     //Listar todos as categorias
     public List<CategoryDTO> findAll() {
         List<CategoryModel> categories = categoryRepository.findAll();
@@ -31,14 +32,15 @@ public class CategoryService {
 
     //Criar Categorias
     public CategoryDTO saveCategory(CategoryDTO categoryDTO) {
-       CategoryModel categoryModel = categoryMapper.map(categoryDTO);
-       categoryModel = categoryRepository.save(categoryModel);
-       return categoryMapper.map(categoryModel);
+        CategoryModel categoryModel = categoryMapper.map(categoryDTO);
+        categoryModel = categoryRepository.save(categoryModel);
+        return categoryMapper.map(categoryModel);
     }
+
     //Buscar por ID
     public CategoryDTO findById(Long id) {
-      Optional<CategoryModel> categoryModel = categoryRepository.findById(id);
-      return categoryModel.map(categoryMapper::map).orElse(null);
+        Optional<CategoryModel> categoryModel = categoryRepository.findById(id);
+        return categoryModel.map(categoryMapper::map).orElse(null);
     }
 
     //Deletar por ID
