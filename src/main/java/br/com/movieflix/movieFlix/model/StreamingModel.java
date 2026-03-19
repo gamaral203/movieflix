@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "tb_Streaming")
+@Table(name = "streaming")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -15,6 +15,6 @@ public class StreamingModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "title", length = 100, nullable = false)
-    private String title;
+    @Column(name = "name", length = 100, nullable = false)
+    private String name;
 }

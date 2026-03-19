@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class StreamingDTO {
     private Long id;
-    private String title;
+    private String name;
 
 
 }
