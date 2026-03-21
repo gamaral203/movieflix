@@ -27,7 +27,7 @@ public class MovieModel {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "realease_date")
+    @Column(name = "release_date")
     private LocalDate releaseDate;
 
     @Column(name = "rating")
