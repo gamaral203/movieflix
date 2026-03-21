@@ -41,12 +41,13 @@ public class StreamingController {
                     .body("Nenhum streaming encontrado");
         }
     }
+
     @DeleteMapping("/deletarPorId/{id}")
-    public ResponseEntity<String> deleteStreamingById(@PathVariable Long id){
+    public ResponseEntity<String> deleteStreamingById(@PathVariable Long id) {
         if (streamingService.findById(id) != null) {
             streamingService.deleteById(id);
             return ResponseEntity.ok().body("id " + id + " Deletado com sucesso");
-        }else{
+        } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("Nenhum streaming encontrado");
         }
