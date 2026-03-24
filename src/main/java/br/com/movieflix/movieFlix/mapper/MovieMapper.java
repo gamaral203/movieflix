@@ -16,6 +16,8 @@ public class MovieMapper {
         movieModel.setUpdatedAt(movieDTO.getUpdatedAt());
         movieModel.setRating(movieDTO.getRating());
         return movieModel;
+
+
     }
 
     public MovieDTO map(MovieModel movieModel) {
@@ -27,5 +29,6 @@ public class MovieMapper {
         movieDTO.setUpdatedAt(movieModel.getUpdatedAt());
         movieDTO.setRating(movieModel.getRating());
         return movieDTO;
+
     }
 }

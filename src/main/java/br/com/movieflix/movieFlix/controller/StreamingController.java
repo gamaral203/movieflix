@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/movieflix/streaming")
+@RequestMapping("/movieflix/streamings")
 public class StreamingController {
 
     private final StreamingService streamingService;
