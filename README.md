@@ -65,13 +65,6 @@ cd movieflix/backend
 ./mvnw spring-boot:run
 
 
-🔐 Acesso ao sistema
-
-(Se tiver usuário padrão, você pode colocar aqui 👇)
-
-Email: usuario@email.com
-Senha: 123456
-
 🌐 API (exemplo)
 GET /movies → lista filmes
 GET /movies/{id} → detalhes
