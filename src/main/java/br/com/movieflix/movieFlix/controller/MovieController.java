@@ -17,9 +17,9 @@ public class MovieController {
     private final MovieService movieService;
 
     @PostMapping("/criar")
-    public ResponseEntity<String> saveMovie(@RequestBody MovieDTO movie) {
+    public ResponseEntity<MovieDTO> saveMovie(@RequestBody MovieDTO movie) {
         MovieDTO movieDTO = movieService.saveMovie(movie);
-        return ResponseEntity.ok(movieDTO.toString());
+        return ResponseEntity.ok(movieDTO);
     }
 
     @GetMapping("/listar")
